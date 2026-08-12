@@ -17,8 +17,6 @@ const lockDateButton = document.getElementById("lock-date-button");
 
 const datePicker = document.getElementById("date-picker");
 
-const timePicker = document.getElementById("time-picker");
-
 const datePreview = document.getElementById("date-preview");
 
 const foodScreen = document.getElementById("food-screen");
@@ -32,8 +30,6 @@ const foodNextButton = document.getElementById("food-next-button");
 const confirmedScreen = document.getElementById("confirmed-screen");
 
 const confirmedDate = document.getElementById("confirmed-date");
-
-const confirmedTime = document.getElementById("confirmed-time");
 
 const confirmedFood = document.getElementById("confirmed-food");
 
@@ -66,11 +62,6 @@ yesButton.addEventListener("click", () => {
 
   questionScreen.classList.remove("active");
 
-  /*
-   * Put the escaped NO button back where it belongs.
-   * This is important because we moved it to <body>.
-   */
-
   if (noButton.parentElement !== answerArea) {
     answerArea.appendChild(noButton);
   }
@@ -81,10 +72,6 @@ yesButton.addEventListener("click", () => {
   noButton.style.transform = "";
 
   escapeMessage.textContent = "";
-
-  /*
-   * Show the YES reaction screen.
-   */
 
   setTimeout(() => {
     yesScreen.classList.add("active");
@@ -109,38 +96,19 @@ const escapeMessages = [
 function moveNoButton() {
   escapeCount++;
 
-  /*
-   * Move the button to the document itself,
-   * instead of keeping it inside the card.
-   */
-
   if (noButton.parentElement !== document.body) {
     document.body.appendChild(noButton);
   }
 
   noButton.style.position = "fixed";
 
-  /*
-   * Button dimensions
-   */
-
   const buttonWidth = noButton.offsetWidth;
   const buttonHeight = noButton.offsetHeight;
-
-  /*
-   * Keep a comfortable distance from
-   * the edges of the screen.
-   */
 
   const padding = 25;
 
   const maxX = window.innerWidth - buttonWidth - padding;
-
   const maxY = window.innerHeight - buttonHeight - padding;
-
-  /*
-   * The YES button should never be blocked.
-   */
 
   const yesRect = yesButton.getBoundingClientRect();
 
@@ -148,11 +116,6 @@ function moveNoButton() {
   let y;
 
   let validPosition = false;
-
-  /*
-   * Keep trying random positions until
-   * we find one that doesn't overlap YES.
-   */
 
   for (let attempt = 0; attempt < 50; attempt++) {
     x = padding + Math.random() * Math.max(1, maxX - padding);
@@ -178,11 +141,6 @@ function moveNoButton() {
     }
   }
 
-  /*
-   * Fallback position if random placement
-   * somehow fails.
-   */
-
   if (!validPosition) {
     x = padding;
     y = padding;
@@ -192,11 +150,10 @@ function moveNoButton() {
   noButton.style.top = `${y}px`;
   noButton.style.transform = "none";
 
-  /*
-   * Show a playful message.
-   */
-
-  const messageIndex = Math.min(escapeCount - 1, escapeMessages.length - 1);
+  const messageIndex = Math.min(
+    escapeCount - 1,
+    escapeMessages.length - 1
+  );
 
   escapeMessage.textContent = escapeMessages[messageIndex];
 }
@@ -229,6 +186,10 @@ noButton.addEventListener("click", (event) => {
   moveNoButton();
 });
 
+/* =========================================
+   DATE SCREEN
+========================================= */
+
 dateButton.addEventListener("click", () => {
   console.log("Let's pick a date. 📅");
 
@@ -240,27 +201,21 @@ dateButton.addEventListener("click", () => {
 });
 
 /* =========================================
-   DATE & TIME SELECTION
+   DATE SELECTION
 ========================================= */
 
 function updateDatePreview() {
   const selectedDate = datePicker.value;
-  const selectedTime = timePicker.value;
 
-  if (!selectedDate || !selectedTime) {
-    datePreview.textContent = "Pick a date and time...";
+  if (!selectedDate) {
+    datePreview.textContent = "Pick a date...";
 
     lockDateButton.classList.remove("ready");
 
     return;
   }
 
-  /*
-   * Convert the selected date into
-   * something more romantic/readable.
-   */
-
-  const dateObject = new Date(`${selectedDate}T${selectedTime}`);
+  const dateObject = new Date(`${selectedDate}T00:00:00`);
 
   const formattedDate = dateObject.toLocaleDateString("en-US", {
     weekday: "long",
@@ -268,12 +223,7 @@ function updateDatePreview() {
     day: "numeric",
   });
 
-  const formattedTime = dateObject.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-  });
-
-  datePreview.textContent = `${formattedDate} · ${formattedTime} 💗`;
+  datePreview.textContent = `${formattedDate} 💗`;
 
   lockDateButton.classList.add("ready");
 }
@@ -284,28 +234,18 @@ function updateDatePreview() {
 
 datePicker.addEventListener("change", updateDatePreview);
 
-/*
- * Update whenever she changes the time.
- */
-
-timePicker.addEventListener("change", updateDatePreview);
-
 /* =========================================
    LOCK THE DATE
 ========================================= */
 
 lockDateButton.addEventListener("click", () => {
-  if (!datePicker.value || !timePicker.value) {
+  if (!datePicker.value) {
     return;
   }
 
   localStorage.setItem("date", datePicker.value);
 
-  localStorage.setItem("time", timePicker.value);
-
   console.log("Date selected:", datePicker.value);
-
-  console.log("Time selected:", timePicker.value);
 
   dateScreen.classList.remove("active");
 
@@ -336,44 +276,25 @@ const foodMessages = {
 
 foodOptions.forEach((option) => {
   option.addEventListener("click", () => {
-    /*
-     * Remove selection from all cards.
-     */
 
     foodOptions.forEach((item) => {
       item.classList.remove("selected");
     });
 
-    /*
-     * Select this card.
-     */
-
     option.classList.add("selected");
-
-    /*
-     * Remember the food.
-     */
 
     selectedFood = option.dataset.food;
 
     localStorage.setItem("food", selectedFood);
 
-    /*
-     * Change the little message.
-     */
-
     foodReaction.textContent = foodMessages[selectedFood];
-
-    /*
-     * Enable next button.
-     */
 
     foodNextButton.classList.add("ready");
   });
 });
 
 /* =========================================
-   CONTINUE
+   CONTINUE TO CONFIRMATION
 ========================================= */
 
 foodNextButton.addEventListener("click", () => {
@@ -384,12 +305,10 @@ foodNextButton.addEventListener("click", () => {
   console.log("Food selected:", selectedFood);
 
   /*
-   * Get saved date and time.
+   * Get saved date.
    */
 
   const savedDate = localStorage.getItem("date");
-
-  const savedTime = localStorage.getItem("time");
 
   /*
    * Format the date.
@@ -402,19 +321,6 @@ foodNextButton.addEventListener("click", () => {
       weekday: "short",
       month: "short",
       day: "numeric",
-    });
-  }
-
-  /*
-   * Format the time.
-   */
-
-  if (savedTime) {
-    const timeObject = new Date(`2000-01-01T${savedTime}`);
-
-    confirmedTime.textContent = timeObject.toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "2-digit",
     });
   }
 
@@ -435,6 +341,10 @@ foodNextButton.addEventListener("click", () => {
   }, 250);
 });
 
+/* =========================================
+   FOOD EMOJI
+========================================= */
+
 function getFoodEmoji(food) {
   const emojis = {
     Pizza: "🍕",
@@ -447,6 +357,10 @@ function getFoodEmoji(food) {
 
   return emojis[food] || "🍽️";
 }
+
+/* =========================================
+   FINAL SCREEN
+========================================= */
 
 finalButton.addEventListener("click", () => {
   console.log("One last thing... 💌");

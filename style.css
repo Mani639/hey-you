@@ -1,5 +1,5 @@
 /* ================================
-   STEP 1 — LANDING PAGE
+   GLOBAL
 ================================ */
 
 * {
@@ -14,6 +14,7 @@
   --accent: #d95775;
   --accent-dark: #c64463;
   --white: rgba(255, 255, 255, 0.88);
+  --background: #fff1f4;
 }
 
 html,
@@ -38,16 +39,40 @@ body {
       rgba(255, 215, 180, 0.7),
       transparent 30%
     ),
-    linear-gradient(135deg, #fff1f4 0%, #ffe7ed 45%, #fff3e8 100%);
+    linear-gradient(
+      135deg,
+      #fff1f4 0%,
+      #ffe7ed 45%,
+      #fff3e8 100%
+    );
 }
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ================================
+   APP
+================================ */
 
 .app {
   width: 100vw;
   height: 100vh;
   height: 100svh;
+
   position: relative;
+
   overflow: hidden;
 }
+
+/* ================================
+   SCREENS
+================================ */
 
 .screen {
   position: absolute;
@@ -61,6 +86,7 @@ body {
 
   opacity: 0;
   visibility: hidden;
+
   transform: scale(0.98);
 
   transition:
@@ -75,17 +101,24 @@ body {
   transform: scale(1);
 }
 
+/* ================================
+   MAIN CARD
+================================ */
+
 .welcome-content {
   width: min(100%, 520px);
-  text-align: center;
 
   position: relative;
   z-index: 2;
 
   padding: 50px 30px;
 
+  text-align: center;
+
   background: var(--white);
+
   border: 1px solid rgba(255, 255, 255, 0.8);
+
   border-radius: 32px;
 
   box-shadow:
@@ -96,6 +129,10 @@ body {
 
   animation: cardIn 1s ease both;
 }
+
+/* ================================
+   HEART
+================================ */
 
 .tiny-heart {
   width: 46px;
@@ -119,31 +156,42 @@ body {
   animation: heartBeat 2.2s ease-in-out infinite;
 }
 
+/* ================================
+   TEXT
+================================ */
+
 .eyebrow {
   margin-bottom: 8px;
 
   color: var(--accent);
+
   font-size: 12px;
   font-weight: 600;
+
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 h1 {
+  margin-bottom: 28px;
+
   font-family: "Caveat", cursive;
+
   font-size: clamp(58px, 14vw, 82px);
   font-weight: 600;
-  line-height: 0.95;
 
-  margin-bottom: 28px;
+  line-height: 0.95;
 
   letter-spacing: -0.02em;
 }
 
 .look {
   display: inline-block;
+
   font-family: "DM Sans", sans-serif;
+
   font-size: 0.38em;
+
   vertical-align: middle;
 
   animation: look 2.5s ease-in-out infinite;
@@ -152,6 +200,7 @@ h1 {
 .intro {
   font-size: 19px;
   font-weight: 500;
+
   line-height: 1.5;
 }
 
@@ -159,20 +208,37 @@ h1 {
   margin-top: 7px;
 
   color: var(--muted);
+
   font-size: 15px;
+
   line-height: 1.6;
 }
 
-.primary-button {
-  border: none;
-  outline: none;
+.tiny-note {
+  margin-top: 22px;
 
+  color: #aa969e;
+
+  font-size: 11px;
+}
+
+/* ================================
+   PRIMARY BUTTON
+================================ */
+
+.primary-button {
   margin-top: 32px;
+
   padding: 15px 24px;
 
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+
   gap: 12px;
+
+  border: none;
+  outline: none;
 
   border-radius: 999px;
 
@@ -180,6 +246,7 @@ h1 {
   background: var(--accent);
 
   font-family: "DM Sans", sans-serif;
+
   font-size: 14px;
   font-weight: 600;
 
@@ -201,6 +268,7 @@ h1 {
 
 .primary-button:hover {
   background: var(--accent-dark);
+
   transform: translateY(-2px);
 
   box-shadow: 0 16px 30px rgba(217, 87, 117, 0.3);
@@ -214,28 +282,26 @@ h1 {
   transform: translateY(0);
 }
 
-.tiny-note {
-  margin-top: 22px;
-
-  color: #aa969e;
-  font-size: 11px;
-}
-
-/* Floating hearts */
+/* ================================
+   FLOATING HEARTS
+================================ */
 
 .hearts {
   position: absolute;
   inset: 0;
 
   pointer-events: none;
+
   overflow: hidden;
 }
 
 .hearts span {
   position: absolute;
+
   bottom: -50px;
 
   color: rgba(217, 87, 117, 0.18);
+
   font-size: 28px;
 
   animation: floatHeart linear infinite;
@@ -243,149 +309,58 @@ h1 {
 
 .hearts span:nth-child(1) {
   left: 8%;
+
   animation-duration: 9s;
   animation-delay: 0s;
 }
 
 .hearts span:nth-child(2) {
   left: 23%;
+
   font-size: 18px;
+
   animation-duration: 12s;
   animation-delay: 3s;
 }
 
 .hearts span:nth-child(3) {
   left: 45%;
+
   font-size: 34px;
+
   animation-duration: 10s;
   animation-delay: 1s;
 }
 
 .hearts span:nth-child(4) {
   left: 67%;
+
   font-size: 20px;
+
   animation-duration: 13s;
   animation-delay: 5s;
 }
 
 .hearts span:nth-child(5) {
   left: 82%;
+
   font-size: 30px;
+
   animation-duration: 11s;
   animation-delay: 2s;
 }
 
 .hearts span:nth-child(6) {
   left: 94%;
+
   font-size: 16px;
+
   animation-duration: 14s;
   animation-delay: 6s;
 }
 
-/* Animations */
-
-@keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px) scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes heartBeat {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  10% {
-    transform: scale(1.08);
-  }
-
-  20% {
-    transform: scale(1);
-  }
-
-  30% {
-    transform: scale(1.08);
-  }
-
-  40% {
-    transform: scale(1);
-  }
-}
-
-@keyframes look {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-
-  50% {
-    transform: rotate(8deg) translateY(-2px);
-  }
-}
-
-@keyframes floatHeart {
-  from {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  to {
-    transform: translateY(-110vh) rotate(25deg);
-    opacity: 0;
-  }
-}
-
-/* Mobile */
-
-@media (max-width: 600px) {
-  .screen {
-    padding: 16px;
-  }
-
-  .welcome-content {
-    padding: 42px 22px;
-    border-radius: 28px;
-  }
-
-  .tiny-heart {
-    margin-bottom: 18px;
-  }
-
-  h1 {
-    margin-bottom: 24px;
-  }
-
-  .intro {
-    font-size: 17px;
-  }
-
-  .sub-intro {
-    font-size: 14px;
-  }
-
-  .primary-button {
-    margin-top: 28px;
-    padding: 14px 21px;
-  }
-}
-
 /* ================================
-   STEP 2 — QUESTION SCREEN
+   STEP 2 — QUESTION
 ================================ */
 
 .question-card {
@@ -393,25 +368,31 @@ h1 {
 }
 
 .question-emoji {
-  font-size: 42px;
   margin-bottom: 18px;
+
+  font-size: 42px;
 
   animation: envelopeFloat 3s ease-in-out infinite;
 }
 
 .question-card h2 {
   max-width: 430px;
+
   margin: 0 auto;
 
   font-family: "Caveat", cursive;
+
   font-size: clamp(42px, 9vw, 60px);
   font-weight: 600;
+
   line-height: 1.05;
 }
 
 .question-card h2 span {
   display: inline-block;
+
   font-family: "DM Sans", sans-serif;
+
   font-size: 0.55em;
 
   animation: nervous 1.8s ease-in-out infinite;
@@ -421,34 +402,41 @@ h1 {
   margin-top: 18px;
 
   color: var(--muted);
+
   font-size: 14px;
 }
 
-/* Answer buttons */
+/* ================================
+   ANSWER BUTTONS
+================================ */
 
 .answer-area {
-  position: relative;
-
   width: 100%;
+
   min-height: 100px;
 
   margin-top: 30px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 14px;
+
+  position: relative;
 }
 
 .answer-button {
+  padding: 14px 21px;
+
   border: none;
   outline: none;
-
-  padding: 14px 21px;
 
   border-radius: 999px;
 
   font-family: "DM Sans", sans-serif;
+
   font-size: 14px;
   font-weight: 600;
 
@@ -461,6 +449,7 @@ h1 {
 
 .yes-button {
   color: white;
+
   background: var(--accent);
 
   box-shadow: 0 10px 25px rgba(217, 87, 117, 0.25);
@@ -476,6 +465,7 @@ h1 {
   position: relative;
 
   color: #6e5a62;
+
   background: #f5e9ed;
 
   border: 1px solid #ead8de;
@@ -492,7 +482,9 @@ h1 {
   transform: scale(0.97);
 }
 
-/* Little message that appears after the button escapes */
+/* ================================
+   ESCAPE MESSAGE
+================================ */
 
 .escape-message {
   min-height: 18px;
@@ -500,57 +492,16 @@ h1 {
   margin-top: 6px;
 
   color: var(--accent);
+
   font-family: "Caveat", cursive;
+
   font-size: 19px;
 
   transition: opacity 0.3s ease;
 }
 
-/* Animations */
-
-@keyframes envelopeFloat {
-  0%,
-  100% {
-    transform: translateY(0) rotate(-3deg);
-  }
-
-  50% {
-    transform: translateY(-7px) rotate(3deg);
-  }
-}
-
-@keyframes nervous {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-
-  50% {
-    transform: rotate(8deg);
-  }
-}
-
-/* Mobile */
-
-@media (max-width: 600px) {
-  .question-card {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .answer-area {
-    min-height: 130px;
-    gap: 10px;
-  }
-
-  .answer-button {
-    padding: 13px 17px;
-    font-size: 13px;
-  }
-}
-
 /* ================================
-   STEP 3 — YES REACTION
+   STEP 3 — YES SCREEN
 ================================ */
 
 .yes-card {
@@ -586,8 +537,11 @@ h1 {
   margin: 0 auto;
 
   font-family: "Caveat", cursive;
+
   font-size: clamp(48px, 11vw, 68px);
+
   font-weight: 600;
+
   line-height: 0.95;
 }
 
@@ -595,6 +549,7 @@ h1 {
   display: inline-block;
 
   font-family: "DM Sans", sans-serif;
+
   font-size: 0.5em;
 
   animation: nervous 1.8s ease-in-out infinite;
@@ -615,10 +570,13 @@ h1 {
   color: var(--muted);
 
   font-size: 14px;
+
   line-height: 1.6;
 }
 
-/* Little floating hearts */
+/* ================================
+   MINI HEARTS
+================================ */
 
 .mini-hearts {
   position: relative;
@@ -643,31 +601,41 @@ h1 {
 
 .mini-hearts span:nth-child(1) {
   left: 15px;
+
   font-size: 15px;
+
   animation-delay: 0s;
 }
 
 .mini-hearts span:nth-child(2) {
   left: 50px;
+
   font-size: 10px;
+
   animation-delay: 0.4s;
 }
 
 .mini-hearts span:nth-child(3) {
   left: 88px;
+
   font-size: 18px;
+
   animation-delay: 0.8s;
 }
 
 .mini-hearts span:nth-child(4) {
   left: 125px;
+
   font-size: 11px;
+
   animation-delay: 1.2s;
 }
 
 .mini-hearts span:nth-child(5) {
   left: 155px;
+
   font-size: 15px;
+
   animation-delay: 1.6s;
 }
 
@@ -679,61 +647,8 @@ h1 {
   animation: buttonAppear 0.7s ease 1.5s forwards;
 }
 
-/* Animations */
-
-@keyframes celebrationPop {
-  from {
-    opacity: 0;
-    transform: scale(0.4);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes celebrationFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-@keyframes miniHeartFloat {
-  0% {
-    opacity: 0;
-    transform: translateY(15px) scale(0.7);
-  }
-
-  30% {
-    opacity: 0.8;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-25px) scale(1.1);
-  }
-}
-
-@keyframes buttonAppear {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* ================================
-   STEP 4 — DATE & TIME
+   STEP 4 — DATE
 ================================ */
 
 .date-card {
@@ -767,8 +682,11 @@ h1 {
   margin: 0 auto;
 
   font-family: "Caveat", cursive;
+
   font-size: clamp(42px, 9vw, 58px);
+
   font-weight: 600;
+
   line-height: 1;
 }
 
@@ -776,6 +694,7 @@ h1 {
   display: inline-block;
 
   font-family: "DM Sans", sans-serif;
+
   font-size: 0.45em;
 }
 
@@ -788,7 +707,7 @@ h1 {
 }
 
 /* ================================
-   INPUTS
+   INPUT
 ================================ */
 
 .input-group {
@@ -814,14 +733,17 @@ h1 {
   padding: 14px 16px;
 
   border: 1px solid #ead8de;
+
   border-radius: 14px;
 
   outline: none;
 
   color: var(--text);
+
   background: rgba(255, 255, 255, 0.8);
 
   font-family: "DM Sans", sans-serif;
+
   font-size: 14px;
 
   transition:
@@ -836,7 +758,7 @@ h1 {
 }
 
 /* ================================
-   LIVE PREVIEW
+   DATE PREVIEW
 ================================ */
 
 .date-preview {
@@ -847,12 +769,14 @@ h1 {
   color: var(--accent);
 
   font-family: "Caveat", cursive;
+
   font-size: 23px;
+
   font-weight: 600;
 }
 
 /* ================================
-   LOCK BUTTON
+   DATE BUTTON
 ================================ */
 
 .lock-date-button {
@@ -882,41 +806,7 @@ h1 {
 }
 
 /* ================================
-   ANIMATIONS
-================================ */
-
-@keyframes calendarFloat {
-  0%,
-  100% {
-    transform: translateY(0) rotate(-2deg);
-  }
-
-  50% {
-    transform: translateY(-6px) rotate(2deg);
-  }
-}
-
-/* ================================
-   MOBILE
-================================ */
-
-@media (max-width: 600px) {
-  .date-card {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
-
-  .input-group {
-    margin-top: 19px;
-  }
-
-  .input-group input {
-    padding: 13px 14px;
-  }
-}
-
-/* ================================
-   STEP 5 — FOOD SELECTION
+   STEP 5 — FOOD
 ================================ */
 
 .food-card {
@@ -950,8 +840,11 @@ h1 {
   margin: 0 auto;
 
   font-family: "Caveat", cursive;
+
   font-size: clamp(44px, 10vw, 62px);
+
   font-weight: 600;
+
   line-height: 1;
 }
 
@@ -959,6 +852,7 @@ h1 {
   display: inline-block;
 
   font-family: "DM Sans", sans-serif;
+
   font-size: 0.45em;
 }
 
@@ -970,6 +864,7 @@ h1 {
   color: var(--muted);
 
   font-size: 14px;
+
   line-height: 1.5;
 }
 
@@ -994,12 +889,14 @@ h1 {
 
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
   gap: 7px;
 
   border: 1px solid #ead8de;
+
   border-radius: 20px;
 
   background: rgba(255, 255, 255, 0.72);
@@ -1050,11 +947,12 @@ h1 {
 
 .food-name {
   font-size: 12px;
+
   font-weight: 600;
 }
 
 /* ================================
-   REACTION
+   FOOD REACTION
 ================================ */
 
 .food-reaction {
@@ -1065,12 +963,14 @@ h1 {
   color: var(--accent);
 
   font-family: "Caveat", cursive;
+
   font-size: 21px;
+
   font-weight: 600;
 }
 
 /* ================================
-   NEXT BUTTON
+   FOOD NEXT BUTTON
 ================================ */
 
 .food-next-button {
@@ -1089,52 +989,6 @@ h1 {
 
 .food-next-button.ready:hover {
   transform: translateY(-2px);
-}
-
-/* ================================
-   ANIMATION
-================================ */
-
-@keyframes foodFloat {
-  0%,
-  100% {
-    transform: translateY(0) rotate(-2deg);
-  }
-
-  50% {
-    transform: translateY(-6px) rotate(2deg);
-  }
-}
-
-/* ================================
-   MOBILE
-================================ */
-
-@media (max-width: 600px) {
-  .food-card {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .food-options {
-    gap: 9px;
-  }
-
-  .food-option {
-    min-height: 92px;
-
-    padding: 10px 5px;
-
-    border-radius: 17px;
-  }
-
-  .food-emoji {
-    font-size: 26px;
-  }
-
-  .food-name {
-    font-size: 11px;
-  }
 }
 
 /* ================================
@@ -1174,8 +1028,11 @@ h1 {
   margin: 0 auto;
 
   font-family: "Caveat", cursive;
+
   font-size: clamp(43px, 9vw, 60px);
+
   font-weight: 600;
+
   line-height: 0.98;
 }
 
@@ -1183,6 +1040,7 @@ h1 {
   display: inline-block;
 
   font-family: "DM Sans", sans-serif;
+
   font-size: 0.45em;
 }
 
@@ -1206,18 +1064,22 @@ h1 {
   padding: 23px 20px;
 
   border: 1px solid #ead8de;
+
   border-radius: 22px;
 
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95),
-    rgba(255, 245, 248, 0.95)
-  );
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 245, 248, 0.95)
+    );
 
   box-shadow: 0 15px 35px rgba(145, 72, 92, 0.09);
 
   text-align: left;
 }
+
+/* Ticket cut-outs */
 
 .date-ticket::before,
 .date-ticket::after {
@@ -1247,12 +1109,10 @@ h1 {
   border-radius: 13px 0 0 13px;
 }
 
+/* Only DATE is currently displayed */
+
 .ticket-row {
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 20px;
+  display: flex;
 }
 
 .ticket-item {
@@ -1266,6 +1126,7 @@ h1 {
   color: #a68f98;
 
   font-size: 9px;
+
   font-weight: 700;
 
   letter-spacing: 1.2px;
@@ -1275,8 +1136,13 @@ h1 {
   color: var(--text);
 
   font-size: 14px;
+
   font-weight: 600;
 }
+
+/* ================================
+   TICKET DIVIDER
+================================ */
 
 .ticket-divider {
   position: relative;
@@ -1286,6 +1152,7 @@ h1 {
   margin: 12px 0;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
@@ -1300,42 +1167,51 @@ h1 {
 
   top: 50%;
 
-  border-top: 1px dashed #decbd2;
+  border-top: 1px dashed #dfc7cf;
 }
 
 .ticket-divider span {
   position: relative;
 
+  z-index: 1;
+
   padding: 0 12px;
 
   color: var(--accent);
+
   background: #fff8fa;
 
-  font-size: 11px;
+  font-size: 14px;
 }
+
+/* ================================
+   FOOD IN TICKET
+================================ */
 
 .ticket-food {
   display: flex;
+
   flex-direction: column;
 
-  gap: 5px;
+  gap: 6px;
 }
 
 .ticket-food-value {
-  color: var(--accent);
+  color: var(--text);
 
   font-family: "Caveat", cursive;
-  font-size: 24px;
+
+  font-size: 25px;
+
   font-weight: 600;
 }
 
 .confirmed-message {
   margin-top: 20px;
 
-  color: var(--text);
+  color: var(--muted);
 
-  font-family: "Caveat", cursive;
-  font-size: 21px;
+  font-size: 14px;
 }
 
 /* ================================
@@ -1343,21 +1219,439 @@ h1 {
 ================================ */
 
 .final-button {
-  margin-top: 18px;
+  margin-top: 25px;
+}
+
+/* ================================
+   STEP 7 — FINAL MESSAGE
+================================ */
+
+.final-card {
+  max-width: 560px;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  scrollbar-width: none;
+}
+
+.final-card::-webkit-scrollbar {
+  display: none;
+}
+
+.final-heart {
+  width: 68px;
+  height: 68px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff0f4;
+
+  font-size: 32px;
+
+  box-shadow: 0 12px 30px rgba(217, 87, 117, 0.16);
+
+  animation:
+    finalPop 0.8s cubic-bezier(0.2, 1.4, 0.4, 1) both,
+    finalFloat 3s ease-in-out 0.8s infinite;
+}
+
+.final-card h2 {
+  max-width: 450px;
+
+  margin: 0 auto;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(48px, 10vw, 65px);
+
+  font-weight: 600;
+
+  line-height: 0.98;
+}
+
+.final-big-text {
+  margin-top: 25px;
+
+  color: var(--muted);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 28px;
+
+  font-weight: 600;
+}
+
+.final-joke {
+  margin-top: 2px;
+
+  color: var(--accent);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 34px;
+
+  font-weight: 700;
+}
+
+.final-small-text {
+  max-width: 430px;
+
+  margin: 18px auto 0;
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+/* ================================
+   SECRET MESSAGE
+================================ */
+
+.secret-box {
+  margin-top: 25px;
+}
+
+.secret-button {
+  padding: 12px 18px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 1px solid #ead8de;
+
+  border-radius: 999px;
+
+  color: var(--text);
+
+  background: rgba(255, 255, 255, 0.75);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.secret-button:hover {
+  transform: translateY(-2px);
+
+  background: #fff8fa;
+
+  box-shadow: 0 8px 20px rgba(145, 72, 92, 0.1);
+}
+
+.secret-message {
+  max-height: 0;
+
+  margin-top: 0;
+
+  padding: 0 20px;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  border-radius: 20px;
+
+  background: #fff0f4;
+
+  transition:
+    max-height 0.6s ease,
+    margin-top 0.4s ease,
+    padding 0.4s ease,
+    opacity 0.4s ease;
+}
+
+.secret-message.visible {
+  max-height: 300px;
+
+  margin-top: 15px;
+
+  padding: 22px 20px;
+
+  opacity: 1;
+}
+
+.secret-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--accent);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.secret-message p {
+  margin-top: 8px;
+
+  color: var(--text);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+.secret-signature {
+  display: block;
+
+  margin-top: 13px;
+
+  color: var(--muted);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 20px;
+
+  text-align: right;
+}
+
+.final-footer {
+  margin-top: 25px;
+
+  color: #aa969e;
+
+  font-size: 11px;
+
+  line-height: 1.6;
 }
 
 /* ================================
    ANIMATIONS
 ================================ */
 
-@keyframes confirmationPop {
+@keyframes cardIn {
   from {
     opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes heartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  10% {
+    transform: scale(1.08);
+  }
+
+  20% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.08);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+}
+
+@keyframes look {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform:
+      rotate(8deg)
+      translateY(-2px);
+  }
+}
+
+@keyframes floatHeart {
+  from {
+    transform:
+      translateY(0)
+      rotate(0deg);
+
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  to {
+    transform:
+      translateY(-110vh)
+      rotate(25deg);
+
+    opacity: 0;
+  }
+}
+
+@keyframes envelopeFloat {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-3deg);
+  }
+
+  50% {
+    transform:
+      translateY(-7px)
+      rotate(3deg);
+  }
+}
+
+@keyframes nervous {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes celebrationPop {
+  from {
+    opacity: 0;
+
     transform: scale(0.4);
   }
 
   to {
     opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+@keyframes celebrationFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes miniHeartFloat {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(15px)
+      scale(0.7);
+  }
+
+  30% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateY(-25px)
+      scale(1.1);
+  }
+}
+
+@keyframes buttonAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes calendarFloat {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-2deg);
+  }
+
+  50% {
+    transform:
+      translateY(-6px)
+      rotate(2deg);
+  }
+}
+
+@keyframes foodFloat {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-2deg);
+  }
+
+  50% {
+    transform:
+      translateY(-6px)
+      rotate(2deg);
+  }
+}
+
+@keyframes confirmationPop {
+  from {
+    opacity: 0;
+
+    transform: scale(0.4);
+  }
+
+  to {
+    opacity: 1;
+
     transform: scale(1);
   }
 }
@@ -1373,249 +1667,21 @@ h1 {
   }
 }
 
-/* ================================
-   MOBILE
-================================ */
-
-@media (max-width: 600px) {
-  .confirmed-card {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .date-ticket {
-    padding: 20px 16px;
-  }
-
-  .ticket-row {
-    gap: 12px;
-  }
-
-  .ticket-value {
-    font-size: 12px;
-  }
-}
-
-/* ================================
-   STEP 7 — FINAL MESSAGE
-================================ */
-
-.final-card {
-    max-width: 530px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-.final-heart {
-  width: 68px;
-  height: 68px;
-
-  margin: 0 auto 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: #fff0f4;
-
-  font-size: 30px;
-
-  box-shadow: 0 12px 30px rgba(217, 87, 117, 0.15);
-
-  animation:
-    finalHeartPop 0.8s cubic-bezier(0.2, 1.4, 0.4, 1) both,
-    finalHeartFloat 3s ease-in-out 0.8s infinite;
-}
-
-.final-card h2 {
-  max-width: 440px;
-
-  margin: 0 auto;
-
-  font-family: "Caveat", cursive;
-  font-size: clamp(44px, 9vw, 60px);
-  font-weight: 600;
-  line-height: 0.95;
-}
-
-.final-big-text {
-  margin-top: 25px;
-
-  color: var(--muted);
-
-  font-size: 15px;
-}
-
-.final-joke {
-  margin-top: 2px;
-
-  color: var(--accent);
-
-  font-family: "Caveat", cursive;
-  font-size: clamp(34px, 8vw, 46px);
-  font-weight: 600;
-
-  transform: rotate(-2deg);
-}
-
-.final-small-text {
-  max-width: 380px;
-
-  margin: 8px auto 0;
-
-  color: var(--text);
-
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-/* ================================
-   SECRET MESSAGE
-================================ */
-
-.secret-box {
-  margin-top: 28px;
-}
-
-.secret-button {
-  padding: 12px 18px;
-
-  border: 1px dashed #dcbcc6;
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.7);
-
-  color: #806b73;
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.secret-button:hover {
-  transform: translateY(-2px);
-
-  background: #fff0f4;
-
-  border-color: var(--accent);
-}
-
-.secret-button span {
-  margin-right: 5px;
-}
-
-.secret-message {
-  max-width: 410px;
-
-  margin: 0 auto;
-
-  padding: 22px 24px;
-
-  border: 1px solid #ead8de;
-  border-radius: 22px;
-
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95),
-    rgba(255, 244, 248, 0.95)
-  );
-
-  box-shadow: 0 15px 35px rgba(145, 72, 92, 0.1);
-
-  opacity: 0;
-
-  transform: translateY(10px) scale(0.97);
-
-  pointer-events: none;
-
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
-}
-
-.secret-message.visible {
-  opacity: 1;
-
-  transform: translateY(0) scale(1);
-
-  pointer-events: auto;
-}
-
-.secret-label {
-  display: block;
-
-  margin-bottom: 10px;
-
-  color: #a68f98;
-
-  font-size: 9px;
-  font-weight: 700;
-
-  letter-spacing: 1.3px;
-}
-
-.secret-message p {
-  margin: 5px 0;
-
-  color: var(--text);
-
-  font-family: "Caveat", cursive;
-  font-size: 23px;
-  line-height: 1.25;
-}
-
-.secret-signature {
-  display: block;
-
-  margin-top: 12px;
-
-  color: var(--accent);
-
-  font-family: "Caveat", cursive;
-  font-size: 19px;
-}
-
-/* ================================
-   FOOTER
-================================ */
-
-.final-footer {
-  max-width: 350px;
-
-  margin: 25px auto 0;
-
-  color: #aa969e;
-
-  font-size: 11px;
-  line-height: 1.6;
-}
-
-/* ================================
-   ANIMATIONS
-================================ */
-
-@keyframes finalHeartPop {
+@keyframes finalPop {
   from {
     opacity: 0;
+
     transform: scale(0.4);
   }
 
   to {
     opacity: 1;
+
     transform: scale(1);
   }
 }
 
-@keyframes finalHeartFloat {
+@keyframes finalFloat {
   0%,
   100% {
     transform: translateY(0);
@@ -1631,12 +1697,162 @@ h1 {
 ================================ */
 
 @media (max-width: 600px) {
-  .final-card {
+  .screen {
+    padding: 16px;
+  }
+
+  .welcome-content {
+    padding: 42px 22px;
+
+    border-radius: 28px;
+  }
+
+  .tiny-heart {
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    margin-bottom: 24px;
+  }
+
+  .intro {
+    font-size: 17px;
+  }
+
+  .sub-intro {
+    font-size: 14px;
+  }
+
+  .primary-button {
+    margin-top: 28px;
+
+    padding: 14px 21px;
+  }
+
+  /* Question */
+
+  .question-card {
     padding-left: 18px;
     padding-right: 18px;
   }
 
-  .secret-message {
-    padding: 20px 18px;
+  .answer-area {
+    min-height: 130px;
+
+    gap: 10px;
+  }
+
+  .answer-button {
+    padding: 13px 17px;
+
+    font-size: 13px;
+  }
+
+  /* Date */
+
+  .date-card {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .input-group {
+    margin-top: 19px;
+  }
+
+  .input-group input {
+    padding: 13px 14px;
+  }
+
+  /* Food */
+
+  .food-card {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .food-options {
+    gap: 9px;
+  }
+
+  .food-option {
+    min-height: 92px;
+
+    padding: 10px 5px;
+
+    border-radius: 17px;
+  }
+
+  .food-emoji {
+    font-size: 26px;
+  }
+
+  .food-name {
+    font-size: 11px;
+  }
+
+  /* Confirmation */
+
+  .confirmed-card {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .date-ticket {
+    padding: 20px 17px;
+  }
+
+  /* Final */
+
+  .final-card {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    max-height: 88vh;
+  }
+
+  .final-small-text {
+    font-size: 13px;
+  }
+}
+
+/* ================================
+   VERY SMALL PHONES
+================================ */
+
+@media (max-width: 380px) {
+  .welcome-content {
+    padding: 34px 17px;
+  }
+
+  h1 {
+    font-size: 56px;
+  }
+
+  .question-card h2 {
+    font-size: 40px;
+  }
+
+  .yes-card h2 {
+    font-size: 45px;
+  }
+
+  .date-card h2 {
+    font-size: 40px;
+  }
+
+  .food-card h2 {
+    font-size: 42px;
+  }
+
+  .confirmed-card h2 {
+    font-size: 41px;
+  }
+
+  .food-options {
+    gap: 7px;
+  }
+
+  .food-option {
+    min-height: 85px;
   }
 }

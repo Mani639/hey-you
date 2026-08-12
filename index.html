@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Hey You 💗</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="app">
+      <!-- Floating hearts -->
+
+      <div class="hearts" aria-hidden="true">
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+      </div>
+
+      <!-- =========================================
+             SCREEN 1 — WELCOME
+        ========================================== -->
+
+      <section class="screen active" id="welcome-screen">
+        <div class="welcome-content">
+          <div class="tiny-heart">♥</div>
+
+          <p class="eyebrow">A very important message</p>
+
+          <h1>
+            Hey you.
+
+            <span class="look"> 👀 </span>
+          </h1>
+
+          <p class="intro">I have a very important question.</p>
+
+          <p class="sub-intro">And yes... I made an entire website for it.</p>
+
+          <button class="primary-button" id="start-button">
+            Okay, show me
+
+            <span> → </span>
+          </button>
+
+          <p class="tiny-note">Don't worry, this won't take long. :)</p>
+        </div>
+      </section>
+
+      <!-- =========================================
+             SCREEN 2 — THE QUESTION
+        ========================================== -->
+
+      <section class="screen" id="question-screen">
+        <div class="welcome-content question-card">
+          <div class="question-emoji">💌</div>
+
+          <p class="eyebrow">Okay... here goes nothing</p>
+
+          <h2>Would you be up for meeting sometime?</h2>
+
+          <p class="question-subtext">
+            Nothing complicated. Just you, me, and maybe some food.
+          </p>
+
+          <div class="answer-area" id="answer-area">
+            <button class="answer-button yes-button" id="yes-button">
+              Yeah, why not? 😊
+            </button>
+
+            <button class="answer-button no-button" id="no-button">
+              No 🙃
+            </button>
+          </div>
+
+          <p class="escape-message" id="escape-message"></p>
+        </div>
+      </section>
+
+      <!-- =========================================
+             SCREEN 3 — SHE SAID YES
+        ========================================== -->
+
+      <section class="screen" id="yes-screen">
+        <div class="welcome-content yes-card">
+          <div class="celebration">💕</div>
+
+          <p class="eyebrow">Wait a second...</p>
+
+<h2>Wait... you said yes? 🙈</h2>          <p class="reaction-text">Okay, I was genuinely expecting a no. 😂</p>
+
+          <p class="reaction-small">Guess I actually have to plan this now.</p>
+
+          <div class="mini-hearts">
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+          </div>
+
+          <button class="primary-button next-button" id="date-button">
+            Okay, let's figure it out
+
+            <span> → </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- =========================================
+             SCREEN 4 — DATE & TIME
+        ========================================== -->
+
+      <section class="screen" id="date-screen">
+        <div class="welcome-content date-card">
+          <div class="calendar-icon">📅</div>
+
+          <p class="eyebrow">So... when should we meet?</p>
+
+          <h2>
+            Let's figure out the details.
+            <span>👀</span>
+          </h2>
+
+          <p class="date-subtext">Pick a day and time that works for you.</p>
+
+          <!-- DATE -->
+
+          <div class="input-group">
+            <label for="date-picker"> Pick a day </label>
+
+            <input type="date" id="date-picker" />
+          </div>
+
+          <!-- TIME -->
+
+          <div class="input-group">
+            <label for="time-picker"> Pick a time </label>
+
+            <input type="time" id="time-picker" />
+          </div>
+
+          <p class="date-preview" id="date-preview">Pick a date and time...</p>
+
+          <button class="primary-button lock-date-button" id="lock-date-button">
+            Sounds good
+
+            <span> 💗 </span>
+          </button>
+
+          <p class="date-note">
+            You pick the time. I'm not making executive decisions. 😌
+          </p>
+        </div>
+      </section>
+
+      <!-- =========================================
+             SCREEN 5 — FOOD
+        ========================================== -->
+
+      <section class="screen" id="food-screen">
+        <div class="welcome-content food-card">
+          <div class="food-icon">🍽️</div>
+
+          <p class="eyebrow">One extremely important question</p>
+
+          <h2>
+            If we meet, what are we getting?
+            <span>👀</span>
+          </h2>
+
+          <p class="food-subtext">Because food makes every plan better.</p>
+
+          <div class="food-options">
+            <button class="food-option" data-food="Pizza">
+              <span class="food-emoji"> 🍕 </span>
+
+              <span class="food-name"> Pizza </span>
+            </button>
+
+            <button class="food-option" data-food="Burger">
+              <span class="food-emoji"> 🍔 </span>
+
+              <span class="food-name"> Burger </span>
+            </button>
+
+            <button class="food-option" data-food="Sandwich">
+              <span class="food-emoji"> 🥪 </span>
+
+              <span class="food-name"> Sandwich </span>
+            </button>
+
+            <button class="food-option" data-food="Noodles">
+              <span class="food-emoji"> 🍜 </span>
+
+              <span class="food-name"> Noodles </span>
+            </button>
+
+            <button class="food-option" data-food="Tacos">
+              <span class="food-emoji"> 🌮 </span>
+
+              <span class="food-name"> Tacos </span>
+            </button>
+
+            <button class="food-option" data-food="Dessert first">
+              <span class="food-emoji"> 🍦 </span>
+
+              <span class="food-name"> Dessert first </span>
+            </button>
+          </div>
+
+          <p class="food-reaction" id="food-reaction">
+            Pick one... I'm judging. 😌
+          </p>
+
+          <button class="primary-button food-next-button" id="food-next-button">
+            Sounds like a plan
+
+            <span> → </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- =========================================
+             SCREEN 6 — MEET-UP PLAN
+        ========================================== -->
+
+      <section class="screen" id="confirmed-screen">
+        <div class="welcome-content confirmed-card">
+          <div class="confirmed-heart">💗</div>
+
+          <p class="eyebrow">Okay... we have a plan.</p>
+
+          <h2>
+            Hopefully this turns into a good story.
+            <span>😊</span>
+          </h2>
+
+          <p class="confirmed-subtext">No pressure. Just a simple meet-up.</p>
+
+          <!-- MEET-UP TICKET -->
+
+          <div class="date-ticket">
+            <div class="ticket-row">
+              <div class="ticket-item">
+                <span class="ticket-label"> DATE </span>
+
+                <span class="ticket-value" id="confirmed-date"> — </span>
+              </div>
+
+              <div class="ticket-item">
+                <span class="ticket-label"> TIME </span>
+
+                <span class="ticket-value" id="confirmed-time"> — </span>
+              </div>
+            </div>
+
+            <div class="ticket-divider">
+              <span> ♥ </span>
+            </div>
+
+            <div class="ticket-food">
+              <span class="ticket-label"> IMPORTANT FOOD DECISION </span>
+
+              <span class="ticket-food-value" id="confirmed-food"> — </span>
+            </div>
+          </div>
+
+          <p class="confirmed-message">Looking forward to meeting you. :)</p>
+
+          <button class="primary-button final-button" id="final-button">
+            One last thing...
+
+            <span> → </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- =========================================
+             SCREEN 7 — FINAL MESSAGE
+        ========================================== -->
+
+      <section class="screen" id="final-screen">
+        <div class="welcome-content final-card">
+          <div class="final-heart">💌</div>
+
+          <p class="eyebrow">Okay, one last thing...</p>
+
+          <h2>I made this during lunch.</h2>
+
+          <p class="final-big-text">So technically...</p>
+
+          <p class="final-joke">this is not a big deal.</p>
+
+          <p class="final-small-text">
+            I just thought asking you like this would be a little more
+            interesting than "Hey, wanna meet sometime?" 😂
+          </p>
+
+          <!-- SECRET MESSAGE -->
+
+          <div class="secret-box">
+            <button class="secret-button" id="secret-button">
+              <span> 🔐 </span>
+
+              There's a secret here
+            </button>
+
+            <div class="secret-message" id="secret-message">
+              <span class="secret-label"> SECRET MESSAGE </span>
+
+              <p>
+                You seemed interesting, so I thought I'd take a chance and say
+                hi properly.
+              </p>
+
+              <p>No expectations. I'd just be happy to meet you. 😊</p>
+
+              <span class="secret-signature"> — me </span>
+            </div>
+          </div>
+
+          <p class="final-footer">
+            No pressure. No hidden catch. Just me asking if you'd like to meet.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
